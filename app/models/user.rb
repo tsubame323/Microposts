@@ -36,8 +36,6 @@ class User < ApplicationRecord
   
   has_many :favorites
   has_many :likes, through: :favorites, source: :micropost
-  has_many :reverses_of_favorites, class_name: 'Favorite', foreign_key: 'micropost_id'
-  has_many :Rlikes, through: :reverses_of_favorite, source: :micropost
   
   def favorite(other_micropost)
       self.favorites.find_or_create_by(micropost_id: other_micropost.id)
